@@ -4,7 +4,6 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import TownService from '../services/towns.service'
-import CharacService from '../services/persos.service'
 
 export default new Vuex.Store({
   // state = les données centralisées
@@ -32,19 +31,6 @@ export default new Vuex.Store({
       else {
         console.log(response.data)
       }
-
-    },
-    async getAllCharacs({ commit }) {
-      console.log('récupération des Persos');
-      let response = await CharacService.getAllCharacs()
-      if (response.error === 0) {
-        commit('updatePersos', response.data)
-      }
-      else {
-        console.log(response.data)
-      }
-
     }
   }
-
 })
