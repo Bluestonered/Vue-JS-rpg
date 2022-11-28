@@ -29,7 +29,7 @@
               <v-col order="last">
                 <v-card class="pa-2" outlined tile>
 
-                  Boutique
+                  Boutiques
                 </v-card>
               </v-col>
               <v-col>
@@ -39,32 +39,45 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col order="last">
-                <v-card class="pa-2" outlined tile>
+              <v-col v-for="(ville, index) in villesFiltre" :key="index">
+                <v-row>
+                  <v-card class="pa-2" outlined tile v-for="(rue, indexRue) in ville.rues" :key="indexRue">
+                    {{ rue.nom }} : {{ rue.boutiques.length }} boutiques
 
-                  Boutique 1
-                  Boutique 2
-                </v-card>
+                    <v-col v-for="(shop, indexShop) in rue.boutiques" :key="indexShop">
+                      {{ shop.nom }} : {{ shop.itemStock.length }} articles en stock, {{ shop.itemCommande.length }} sur
+                      commande
+                    </v-col>
+                  </v-card>
+                </v-row>
+
               </v-col>
-              <v-col>
-                <v-card class="pa-2" outlined tile>
-                  Rue + Nbr Boutique
+
+              <!-- <v-col v-for="(ville, index) in villesFiltre" :key="index">
+                <v-card class="pa-2" outlined tile v-for="(rue, indexRue) in ville.rues" :key="indexRue">
+                  <v-row v-for="(shop, indexShop) in rue.boutiques" :key="indexShop">
+
+                    {{ shop.nom }} : {{ shop.itemStock.length }} articles en stock, {{ shop.itemCommande.length }} sur
+                    commande
+
+                  </v-row>
+                  {{ rue.nom }} : {{ rue.boutiques.length }} boutiques
                 </v-card>
-              </v-col>
+              </v-col> -->
+
             </v-row>
-            <v-row no-gutters>
-              <v-col order="last">
-                <v-card class="pa-2" outlined tile>
-                  Boutique 1
-                  Boutique 2
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card class="pa-2" outlined tile>
 
-                  Rue2 + Nbr Boutique
+            <v-row>
+              <v-col v-for="(ville, index) in villesFiltre" :key="index"> Rues: {{ ville.rues.length }}</v-col>
+              <v-col> Boutiques</v-col>
+            </v-row>
+            <v-row>
+              <v-col v-for="(ville, index) in villesFiltre" :key="index">
+                <v-card class="pa-2" outlined tile v-for="(rue, indexRue) in ville.rues" :key="indexRue">
+                  {{ rue.nom }} : {{ rue.boutiques.length }} boutiques
                 </v-card>
               </v-col>
+              <v-col> Boutiques</v-col>
             </v-row>
 
           </div>
