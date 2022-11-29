@@ -8,23 +8,34 @@
           <div v-if="filterActive">
             <label for="filtertown">filtre : </label><input v-model="filter" id="filtertown">
           </div>
-          <v-row v-for="(ville, id) in villesFiltre" :key="id"> 
+          <div v-else>
+            <ul>
+              <li v-for="(ville, index) in villes" :key="index">{{ ville.nom }}</li>
+            </ul>
+          </div>
+          <v-row v-for="(ville, id) in villesFiltre" :key="id">
             <v-col>
-              {{ ville.nom }}
+              <div v-if="filterActive">
+                {{ ville.nom }}
+              </div>
+
             </v-col>
             <v-col v-if="villesFiltre.length == 1">
               <v-row>
                 <v-col>
-                  Rues : {{ville.rues.length}}
+                  Rues : {{ ville.rues.length }}
                   <v-row>
                     <v-col>
-                      <v-row v-for="(rue,id) in ville.rues" :key="id">
+                      <v-row v-for="(rue, id) in ville.rues" :key="id">
                         <v-col>
-                          {{rue.nom}} : {{rue.boutiques.length}} boutiques
+                          {{ rue.nom }} : {{ rue.boutiques.length }} boutiques
                         </v-col>
                         <v-col>
-                          <v-row v-for="(boutique,id) in rue.boutiques" :key="id">
-                            {{boutique.nom}} : {{boutique.itemStock.length}} en stock, {{boutique.itemCommande.length}} sur commande
+                          <v-row v-for="(boutique, id) in rue.boutiques" :key="id">
+                            {{ boutique.nom }} : {{ boutique.itemStock.length }} en stock, {{
+    boutique.itemCommande.length
+                            }}
+                            sur commande
                           </v-row>
                         </v-col>
                       </v-row>
@@ -36,12 +47,12 @@
             </v-col>
           </v-row>
         </h3>
-      </v-col>      
+      </v-col>
     </v-row>
 
-    
 
-    
+
+
   </v-container>
 
 
@@ -64,6 +75,6 @@ export default {
       return this.villes.filter(v => v.nom.includes(this.filter))
     }
   }
-  
+
 }
 </script>

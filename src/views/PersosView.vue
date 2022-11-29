@@ -42,8 +42,8 @@
             <v-row>
               emplacements
             </v-row>
-            <v-row>
-              tête :{{ perso.level }}
+            <v-row v-for="(head,id) in perso.emplacements[0]" :key="id">
+              tête []:{{ head.length}}
             </v-row>
             <v-row>
               Corps :{{ perso.nom }}
