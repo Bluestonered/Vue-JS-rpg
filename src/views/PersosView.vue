@@ -19,22 +19,22 @@
               Attributs
             </v-row>
             <v-row>
-              Niveau :{{ perso.level }}
+              Niveau :{{ perso.niveau }}
             </v-row>
             <v-row>
-              Vie :{{ perso.nom }}
+              Vie :{{ perso.attributs.vie }}
             </v-row>
             <v-row>
-              Vitalité :{{ perso.nom }}
+              Vitalité :{{ perso.attributs.vitalite }}
             </v-row>
             <v-row>
-              Force :{{ perso.nom }}
+              Force :{{ perso.attributs.force }}
             </v-row>
             <v-row>
-              Armure :{{ perso.nom }}
+              Armure :{{ perso.attributs.protection }}
             </v-row>
             <v-row>
-              Or :{{ perso.nom }}
+              Or :{{ perso.or }}
             </v-row>
           </v-col>
           
@@ -61,8 +61,6 @@
               item acheté :{{ perso.nom }}
             </v-row>
           </v-col>
-
-
         </v-row>
         
         
