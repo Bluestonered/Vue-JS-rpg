@@ -64,6 +64,6 @@ export default {
       return this.villes.filter(v => v.nom.includes(this.filter))
     }
   }
-
+  
 }
 </script>
