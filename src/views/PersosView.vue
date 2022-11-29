@@ -10,16 +10,73 @@
             <ul>
               <li v-for="(perso, index) in persoFiltre" :key="index">{{ perso.nom }}</li>
             </ul>
-            <div v-if="persoFiltre.length === 1"></div>
+            
           </h3>
+        <div v-if="persoFiltre.length === 1">
+          <v-row v-for="(perso, index) in persoFiltre" :key="index">
+          <v-col>
+            <v-row>
+              Attributs
+            </v-row>
+            <v-row>
+              Niveau :{{ perso.level }}
+            </v-row>
+            <v-row>
+              Vie :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Vitalité :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Force :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Armure :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Or :{{ perso.nom }}
+            </v-row>
+          </v-col>
+          
+          <v-col>
+            <v-row>
+              emplacements
+            </v-row>
+            <v-row>
+              tête :{{ perso.level }}
+            </v-row>
+            <v-row>
+              Corps :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Mains :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Ceinture :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              Sac a dos :{{ perso.nom }}
+            </v-row>
+            <v-row>
+              item acheté :{{ perso.nom }}
+            </v-row>
+          </v-col>
+
+
+        </v-row>
+        
+        
+        </div>
         </v-col>
-        <v-col>
-          Attributs
-        </v-col>
-        <v-col>
-          emplacements
-        </v-col>
+
+        
+      
+
+
       </v-row>
+      
+
+
     </v-app>
   </v-container>
 
