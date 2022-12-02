@@ -1,18 +1,36 @@
 <template>
   <v-container>
     <h1>Les personnages</h1>
-
+    
     <v-app>
       <v-row>
+        <v-col>
+          <NavBar> 
+            :titles="[ {text: "menu1", color: "color1},{text: "menu2", color: "color2}]"
+          </NavBar>
+        </v-col>
         <v-col>
           <h3>
             <label for="filterperso">filtre : </label><input v-model="filter" id="filtertown">
             <ul>
               <li v-for="(perso, index) in persoFiltre" :key="index">{{ perso.nom }}</li>
             </ul>
+            
+            
 
           </h3>
           <div v-if="persoFiltre.length === 1">
+
+            <CheckedList 
+            :data="persoFiltre" 
+            :item-check="true" 
+            :item-button="{show:true, texte:'omelette'}" 
+            :list-button="{show:true, texte:'biscuit'}" 
+            :fields="['nom']"
+            @list-button-clicked ="lButnClkd"
+            @item-button-clicked = "iButClkd"
+            @checked-changed="cChangd"
+            >   </CheckedList>
 
             <v-row v-for="(perso, index) in persoFiltre" :key="index">
               <v-col>
@@ -61,20 +79,14 @@
                 </v-row>
               </v-col>
             </v-row>
-
-
           </div>
         </v-col>
-
-
-
-
-
       </v-row>
-
-
-
+      
     </v-app>
+
+    
+    
   </v-container>
 
 </template>
@@ -82,6 +94,8 @@
 <script>
 
 import { mapState } from 'vuex'
+import CheckedList from '@/components/CheckedList.vue';
+import NavBar from '@/components/NavBar.vue';
 export default {
   name: 'PersosView',
   data: () => ({
@@ -93,7 +107,31 @@ export default {
     persoFiltre() {
       return this.persos.filter(v => v.nom.includes(this.filter))
     },
+  },
+  components: {
+    CheckedList,
+    NavBar
+  },
+  props:{
+
+  },
+  methods: {
+    
+    lButnClkd(id) {
+      alert(id)
+    },
+    iButClkd(id)
+    {
+      alert(id)
+    },
+    cChangd(id)
+    {
+      alert(id)
+    }
   }
 
 }
 </script>
+
+
+        
