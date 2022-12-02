@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <!-- <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img alt="Vuetify Logo" class="shrink mr-2" contain
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png" transition="scale-transition" width="40" />
@@ -15,8 +15,22 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
-    </v-app-bar>
+    </v-app-bar> -->
+    <v-navigation-drawer app>
+      <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6" >
+              NavBarComp
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+        <br>
 
+      <NavBar
+        :titles="[{ text: 'Les villes', color: 'color1', path: '/towns' }, { text: 'Les personnages', color: 'color2', path: '/persos' }]">
+      </NavBar>
+    </v-navigation-drawer>
     <v-main>
       <router-view />
     </v-main>
@@ -26,6 +40,7 @@
 <script>
 
 import { mapActions } from 'vuex'
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'App',
@@ -40,6 +55,10 @@ export default {
   mounted() {
     this.getAllTowns()
     this.getAllCharacs()
-  }
+  },
+  components: {
+    NavBar,
+  },
+  
 };
 </script>

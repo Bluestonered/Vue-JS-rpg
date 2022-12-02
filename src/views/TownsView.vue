@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Les Villes</h1>
+    <h1 class="center">Les Villes</h1>
     <v-row no-gutters>
       <v-col>
         <h3> <label for="filteractive">filtrage possible : </label><input type="checkbox" v-model="filterActive"
@@ -78,3 +78,12 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.center {
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+</style>
