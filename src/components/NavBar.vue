@@ -3,8 +3,8 @@
         <v-row class="center" v-for="(title, index) in titles" :key="index">
 
             <button>
-                <a :href=title.path>
-                    <span class="button_top"> {{ title.text }}
+                <a :href=title.path >
+                    <span class="button_top"> {{title.text}}
                     </span>
                 </a>
             </button>
@@ -27,6 +27,9 @@ export default {
     justify-content: center;
 }
 
+a {
+    text-decoration: none; 
+}
 button {
     /* Variables */
     --button_radius: 0.85em;
