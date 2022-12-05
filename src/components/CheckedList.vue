@@ -2,22 +2,17 @@
   <div>
     <v-card style="max-width: 50rem;" v-for="(item, id) in data" :key="id">
       <v-card-text>
-        <v-list>
-          <v-list-item class="justify-space-between" v-for="field in fields" :key="field">
-            <v-checkbox @click="$emit('checked-changed', id)" v-if="(itemCheck)" v-model="checkbox"></v-checkbox>
+        <v-row>
+          <v-checkbox @click="$emit('checked-changed', id)" v-if="itemCheck" :checked="checked[id]" ></v-checkbox>
+          <v-col class="justify-space-between" v-for="field in fields" :key="field">
             {{ item[field] }}
-            <v-btn @click="$emit('item-button-clicked', id)" v-if="(itemButton.show)" tile color="success">
-              {{ itemButton.texte }}
-            </v-btn>
-          </v-list-item>
-        </v-list>
+          </v-col>
+          <v-btn @click="$emit('item-button-clicked', id)" v-if="(itemButton.show)" tile color="success">
+          {{ itemButton.texte }}
+          </v-btn>
+        </v-row>
       </v-card-text>
     </v-card>
-
-
-
-
-
     <v-row v-if="(listButton.show)" justify="center">
       <v-btn @click="$emit('list-button-clicked', id)" tile color="error">
         {{ listButton.texte }}
@@ -39,6 +34,8 @@ export default {
   },
   data: () => {
     return {
+
+
     }
   },
 
@@ -49,5 +46,7 @@ export default {
 </script>
   
 <style scoped>
+
+
 
 </style>

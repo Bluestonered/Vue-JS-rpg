@@ -32,26 +32,27 @@
                     </span>
                   </button>
                   <div v-if="(idRue == id)">
-                  <CheckedList :data="rue.boutiques" :item-check="false"
-                    :item-button="{ show: true, texte: 'Selectionner' }"
-                    :list-button="{ show: false, texte: 'biscuit' }" :fields="['nom']" @list-button-clicked="lButnClkd"
-                    @item-button-clicked="iButClkd" @checked-changed="cChangd"></CheckedList>
+                    <CheckedList :data="rue.boutiques" :item-check="false"
+                      :item-button="{ show: true, texte: 'Selectionner' }"
+                      :list-button="{ show: false, texte: 'biscuit' }" :fields="['nom']"
+                      @list-button-clicked="lButnClkd" @item-button-clicked="iButClkd" @checked-changed="cChangd"
+                      :checked="Array(rue.boutiques.length).fill(false)"></CheckedList>
 
-                    
+
                   </div>
                   <v-col>
                     <div v-if="(idRue == id)">
-                    <Shop :name-shop="rue.boutiques[idSlctshop].nom"></Shop>
-                 
-                  </div>
-                </v-col>
-                  
+                      <Shop v-if="ShopActual" :shop="ShopActual"></Shop>
+
+                    </div>
+                  </v-col>
+
                 </v-row>
               </div>
 
 
             </v-col>
-            <v-col v-if="villesFiltre.length == 1">
+            <!-- <v-col v-if="villesFiltre.length == 1">
               <v-row>
 
                 <v-col>
@@ -76,7 +77,7 @@
                   </v-row>
                 </v-col>
               </v-row>
-            </v-col>
+            </v-col> -->
           </v-row>
         </h3>
       </v-col>
@@ -103,12 +104,28 @@ export default {
     filter: '',
     filterActive: false,
     idRue: -1,
-    idSlctshop: 0,
+    idSlctshop: -1
   }),
   computed: {
     ...mapState(['villes']),
     villesFiltre() {
       return this.villes.filter(v => v.nom.includes(this.filter))
+    },
+    villeSelected() {
+
+      if (this.villesFiltre.length === 1) {
+        return this.villesFiltre[0];
+      }
+      return null;
+
+      // let val = this.villesFiltre.length === 1 ? this.villesFiltre[0]: null
+
+    },
+    ShopActual() {
+      if (this.villeSelected && this.idRue !== -1 && this.idSlctshop !== -1) {
+        return this.villeSelected.rues[this.idRue].boutiques[this.idSlctshop]
+      }
+      return null
     }
   },
   components: {
@@ -117,14 +134,14 @@ export default {
   },
   methods: {
 
-    myFunction(id){
+    myFunction(id) {
       this.idRue = id;
     },
 
-    iButClkd(id){
+    iButClkd(id) {
       this.idSlctshop = id;
     }
-}
+  }
 
 }
 </script>
