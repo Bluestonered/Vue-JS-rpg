@@ -37,8 +37,15 @@
                     :list-button="{ show: false, texte: 'biscuit' }" :fields="['nom']" @list-button-clicked="lButnClkd"
                     @item-button-clicked="iButClkd" @checked-changed="cChangd"></CheckedList>
 
-                    <Shop :name-shop="rue.boutiques[1].nom"></Shop>
+                    
                   </div>
+                  <v-col>
+                    <div v-if="(idRue == id)">
+                    <Shop :name-shop="rue.boutiques[idSlctshop].nom"></Shop>
+                 
+                  </div>
+                </v-col>
+                  
                 </v-row>
               </div>
 
@@ -96,6 +103,7 @@ export default {
     filter: '',
     filterActive: false,
     idRue: -1,
+    idSlctshop: 0,
   }),
   computed: {
     ...mapState(['villes']),
@@ -111,6 +119,10 @@ export default {
 
     myFunction(id){
       this.idRue = id;
+    },
+
+    iButClkd(id){
+      this.idSlctshop = id;
     }
 }
 
